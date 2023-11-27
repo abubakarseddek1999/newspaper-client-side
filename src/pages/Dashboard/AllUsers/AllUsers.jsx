@@ -75,7 +75,8 @@ const AllUsers = () => {
                     {/* head */}
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>#</th>
+                            <th>Photo</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th> Role</th>
@@ -86,10 +87,17 @@ const AllUsers = () => {
                         {
                             users.map((user, index) => <tr key={user._id}>
                                 <th>{index + 1}</th>
+                                <th>
+                                    <div className="avatar">
+                                        <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                            <img src={user.photo} alt="user photo"/>
+                                        </div>
+                                    </div>
+                                </th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>
-                                   { user.role === 'admin' ? 'Admin' : <button
+                                    {user.role === 'admin' ? 'Admin' : <button
                                         onClick={() => handleMakeAdmin(user)}
                                         className="btn btn-lg bg-orange-500"><FaUser className="text-white text-2xl"></FaUser>
                                     </button>}
