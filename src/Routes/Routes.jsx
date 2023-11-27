@@ -19,6 +19,8 @@ import PaymentHistory from "../pages/Dashboard/paymentHistory/PaymentHistory";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../pages/Dashboard/Adminhome/AdminHome";
 import Article from "../pages/order/Article/Article";
+import ArticleDetails from "../components/ArticleCard/ArticleDetails";
+import UpdateProfile from "../pages/updateProfile/UpdateProfile";
 
 
 export const router = createBrowserRouter([
@@ -37,7 +39,12 @@ export const router = createBrowserRouter([
         },
         {
           path:'/Article/:category',
-          element:<Article></Article>
+          element:<PrivetRoute><Article></Article></PrivetRoute>
+        },
+        {
+          path: '/details/:id',
+          element: <PrivetRoute><ArticleDetails></ArticleDetails></PrivetRoute>,
+          // loader:({params})=> fetch(`https://computer-engineer-server.vercel.app/services/${params.id}`)
         },
         {
           path:'/Article',
@@ -46,6 +53,10 @@ export const router = createBrowserRouter([
         {
           path:'/login',
           element: <Login></Login>
+        },
+        {
+          path:'/updateProfile',
+          element: <UpdateProfile></UpdateProfile>
         },
         {
           path:'/signUp',

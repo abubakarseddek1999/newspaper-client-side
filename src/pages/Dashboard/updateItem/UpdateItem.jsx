@@ -38,8 +38,7 @@ const UpdateItem = () => {
     const selectedItem = menu?.find(item => item._id === id);
     // console.log(selectedItem);
     const { title, category, price, recipe, image,_id } = selectedItem || {};
-    console.log(_id);
-
+    
     const onSubmit = async (data) => {
         // console.log(data)
         // image upload to imgbb and then get an url
@@ -70,7 +69,7 @@ const UpdateItem = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `${data.name} is updated to the menu`,
+                    title: `${data.title} is updated to the menu`,
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -82,6 +81,7 @@ const UpdateItem = () => {
         console.log('with image url', res.data);
 
     };
+    console.log(category);
     return (
         <div>
             <SectionTitle Heading={"Update an Item"} SubHeading={"Refresh info"}></SectionTitle>
@@ -96,7 +96,7 @@ const UpdateItem = () => {
                         <input
                             type="text"
                             defaultValue={selectedItem?.title}
-                            {...register("title", { required: true })}
+                            {...register("title", )}
                             placeholder="news title"
                             className="input input-bordered w-full " />
 
@@ -108,7 +108,8 @@ const UpdateItem = () => {
                                 <span className="label-text">category*</span>
 
                             </label>
-                            <select defaultValue={selectedItem?.category} {...register("category", { required: true })}
+                        
+                            <select defaultValue={category} {...register("category", )}
                                 className="select select-bordered w-full ">
                                 <option disabled value="default" >Select a category</option>
                                 <option value="sports">sports</option>
@@ -130,7 +131,7 @@ const UpdateItem = () => {
                             <input
                                 type="text"
                                 defaultValue={selectedItem?.publisher_name}
-                                {...register("publisher", { required: true })}
+                                {...register("publisher",)}
                                 placeholder="Publisher_name type here"
                                 className="input input-bordered w-full " />
 
@@ -149,8 +150,6 @@ const UpdateItem = () => {
                     <div>
                         <input  {...register("image", { required: true })} type="file" className="file-input w-full max-w-xs" />
                     </div>
-
-
                     <button className="btn m-2">Update Item</button>
                 </form>
             </div>

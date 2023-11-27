@@ -74,7 +74,9 @@ const Navbar = () => {
 
                                 </li>
                                 <li>
-                                    <button className="btn btn-sm  btn-ghost text-black">Profile </button>
+                                    <div className="flex justify-center">
+                                    <Link to='/updateProfile'><button className="btn btn-sm btn-ghost text-black">Profile update</button></Link>
+                                    </div>
 
                                 </li>
                                 <li>
