@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet";
 import Banner from "../Banner/Banner";
+import AllPublisher from "../AllPublisher/AllPublisher";
 // import PopularItem from "../Popular/PopularItem";
 import Reviews from "../reviews/Reviews";
 import PlanSection from "../planSection/PlanSection";
@@ -15,6 +16,7 @@ const Home = () => {
            <Banner></Banner>
            <TrendingArticle></TrendingArticle>
            <PlanSection></PlanSection>
+           <AllPublisher></AllPublisher>
            <Statistic></Statistic>
 
            {/* <PopularItem></PopularItem> */}

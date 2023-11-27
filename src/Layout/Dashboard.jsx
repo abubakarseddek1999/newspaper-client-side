@@ -24,7 +24,7 @@ const Dashboard = () => {
                             </li>
                             <li>
 
-                                <NavLink to="/dashboard/addItems"> <FaNewspaper></FaNewspaper> Add items</NavLink>
+                                <NavLink to="/dashboard/addItems"> <FaNewspaper></FaNewspaper> Add Article</NavLink>
                             </li>
                             <li>
 
@@ -73,7 +73,7 @@ const Dashboard = () => {
                     </li>
                     <li>
 
-                        <NavLink to="/Articles">All Articles</NavLink>
+                        <NavLink to="/Article/salad">All Articles</NavLink>
                     </li>
 
                 </ul>
