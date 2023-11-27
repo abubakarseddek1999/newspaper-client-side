@@ -1,4 +1,4 @@
-import { FaAd, FaCalendar, FaEnvelope, FaHome, FaList, FaShoppingCart, FaUsers, FaUtensils, } from "react-icons/fa";
+import { FaAd, FaCalendar, FaHome, FaList, FaNewspaper, FaShoppingCart, FaUsers,  } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../Hooks/useCart";
 import useAdmin from "../Hooks/useAdmin";
@@ -24,7 +24,7 @@ const Dashboard = () => {
                             </li>
                             <li>
 
-                                <NavLink to="/dashboard/addItems"> <FaUtensils></FaUtensils> Add items</NavLink>
+                                <NavLink to="/dashboard/addItems"> <FaNewspaper></FaNewspaper> Add items</NavLink>
                             </li>
                             <li>
 
@@ -73,7 +73,7 @@ const Dashboard = () => {
                     </li>
                     <li>
 
-                        <NavLink to="/dashboard/publisher">All Articles</NavLink>
+                        <NavLink to="/Articles">All Articles</NavLink>
                     </li>
 
                 </ul>

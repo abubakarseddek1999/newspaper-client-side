@@ -21,6 +21,7 @@ import AdminHome from "../pages/Dashboard/Adminhome/AdminHome";
 import Article from "../pages/order/Article/Article";
 import ArticleDetails from "../components/ArticleCard/ArticleDetails";
 import UpdateProfile from "../pages/updateProfile/UpdateProfile";
+import AddPublisher from "../pages/Dashboard/AddPublisher/AddPublisher";
 
 
 export const router = createBrowserRouter([
@@ -102,6 +103,10 @@ export const router = createBrowserRouter([
         {
           path:'addItems',
           element:<AdminRoute><AddItem></AddItem></AdminRoute>
+        },
+        {
+          path:'publisher',
+          element:<AdminRoute><AddPublisher></AddPublisher></AdminRoute>
         },
         {
           path:'manageItems',

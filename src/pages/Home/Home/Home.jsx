@@ -1,7 +1,6 @@
 import { Helmet } from "react-helmet";
 import Banner from "../Banner/Banner";
 // import PopularItem from "../Popular/PopularItem";
-// import Category from "../category/Category";
 import Reviews from "../reviews/Reviews";
 import PlanSection from "../planSection/PlanSection";
 import TrendingArticle from "../TrendingArticle/TrendingArticle";
@@ -17,7 +16,7 @@ const Home = () => {
            <TrendingArticle></TrendingArticle>
            <PlanSection></PlanSection>
            <Statistic></Statistic>
-           {/* <Category></Category> */}
+
            {/* <PopularItem></PopularItem> */}
            <Reviews></Reviews>
             
