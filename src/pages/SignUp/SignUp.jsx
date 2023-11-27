@@ -30,7 +30,8 @@ const SignUp = () => {
                         // console.log("user profile info update");
                         const userInfo = {
                             name: data.name,
-                            email: data.email
+                            email: data.email,
+                            photo: data.photo
 
                         }
                         axiosPublic.post('/users', userInfo)
