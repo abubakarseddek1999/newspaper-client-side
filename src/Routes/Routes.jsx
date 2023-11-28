@@ -24,6 +24,7 @@ import UpdateProfile from "../pages/updateProfile/UpdateProfile";
 import AddPublisher from "../pages/Dashboard/AddPublisher/AddPublisher";
 import MyProfile from "../pages/updateProfile/MyProfile";
 import PremiumArticle from "../pages/Premium Article/PremiumArticle";
+import PremiumNewsDetails from "../pages/Premium Article/PremiumNewsDetails";
 
 
 export const router = createBrowserRouter([
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
           path: '/details/:id',
           element: <PrivetRoute><ArticleDetails></ArticleDetails></PrivetRoute>,
           // loader:({params})=> fetch(`https://computer-engineer-server.vercel.app/services/${params.id}`)
+        },
+        {
+          path: '/premiumNews/:id',
+          element: <PrivetRoute><PremiumNewsDetails></PremiumNewsDetails></PrivetRoute>,
         },
         {
           path:'/Article',

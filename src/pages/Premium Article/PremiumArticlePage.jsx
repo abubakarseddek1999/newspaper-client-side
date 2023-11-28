@@ -104,7 +104,7 @@ const PremiumArticlesPage = () => {
                                 <p> <span className="text-xl font-bold">Publisher</span> :{article.publisher}</p>
                                 <p>{article?.description?.slice(0, 70)}...</p>
                                 <div className="card-actions justify-center">
-                                    <Link to='/premiumDetailsNews'><button className="btn text-center bg-slate-100 btn-outline text-black border-0 border-blue-400 border-b-4">Details</button></Link>
+                                    <Link to={`/premiumNews/${article?.id}`}><button className="btn text-center bg-slate-100 btn-outline text-black border-0 border-blue-400 border-b-4">Details</button></Link>
                                    
                                 </div>
                             </div>
