@@ -22,6 +22,7 @@ import Article from "../pages/order/Article/Article";
 import ArticleDetails from "../components/ArticleCard/ArticleDetails";
 import UpdateProfile from "../pages/updateProfile/UpdateProfile";
 import AddPublisher from "../pages/Dashboard/AddPublisher/AddPublisher";
+import MyProfile from "../pages/updateProfile/MyProfile";
 
 
 export const router = createBrowserRouter([
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
         {
           path:'/login',
           element: <Login></Login>
+        },
+        {
+          path:'/myProfile',
+          element: <MyProfile></MyProfile>
         },
         {
           path:'/updateProfile',

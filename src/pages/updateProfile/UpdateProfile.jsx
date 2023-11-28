@@ -1,76 +1,82 @@
-import { useState } from "react";
 
+import { Link } from "react-router-dom";
+import { FaBackward } from "react-icons/fa";
+import useAuth from "../../Hooks/useAuth";
+import { getAuth, updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const ProfileUpdate = () => {
-    const [displayName, setDisplayName] = useState('');
-    const [photoURL, setPhotoURL] = useState('');
+    const { user } = useAuth();
+    console.log(user);
+    const auth = getAuth();
 
-    //   useEffect(() => {
-    //     // Fetch and display the current user's profile on component mount
-    //     const user = firebase.auth().currentUser;
-    //     if (user) {
-    //       setDisplayName(user.displayName || '');
-    //       setPhotoURL(user.photoURL || '');
-    //     }
-    //   }, []);
+    const handleLogin = e => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const phone = form.phone.value;
+        console.log(name, photo, phone);
 
-    //   const updateProfile = () => {
-    //     const user = firebase.auth().currentUser;
+        updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photo, phoneNumber: phone
 
-    //     user.updateProfile({
-    //       displayName: displayName,
-    //       photoURL: photoURL
-    //     })
-    //     .then(() => {
-    //       // Profile updated successfully
-    //       console.log("Profile updated successfully");
-    //     })
-    //     .catch((error) => {
-    //       // Handle errors
-    //       console.error("Error updating profile:", error);
-    //     });
-    //   };
+        }).then(() => {
+            // Profile updated!
+            console.log('profile updated');
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Updated your profile",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            // ...
+        }).catch((error) => {
+            console.log(error.message);
+            // An error occurred
+            // ...
+        });
+    }
+
 
     return (
-        <div className="pt-20 flex justify-center">
-            <div className="max-w-md w-full h-[700px] py-24 px-5 mt-5 bg-white rounded-md shadow-md">
+        <div className="pt-20 flex mb-2  justify-center">
+            <div className="max-w-md bg-slate-300  w-full h-[700px] py-24 px-5 mt-5  rounded-md shadow-md">
                 <h2 className="text-3xl font-bold mb-6 text-center">Profile Update</h2>
+                <form onSubmit={handleLogin} className="card-body">
 
-                <form className="space-y-4">
-                    <div>
-                        <label htmlFor="displayNameInput" className="block text-sm font-medium text-gray-600">Display Name:</label>
-                        <input
-                            type="text"
-                            id="displayNameInput"
-                            value={displayName}
-                            onChange={(e) => setDisplayName(e.target.value)}
-                            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                            placeholder="Enter your display name"
-                        />
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-bold">User Name</span>
+                        </label>
+                        <input type="text" defaultValue={user?.displayName} placeholder="Your name" name='name' className="input input-bordered" required />
                     </div>
 
-                    <div>
-                        <label htmlFor="photoURLInput" className="block text-sm font-medium text-gray-600">Photo URL:</label>
-                        <input
-                            type="text"
-                            id="photoURLInput"
-                            value={photoURL}
-                            onChange={(e) => setPhotoURL(e.target.value)}
-                            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
-                            placeholder="Enter your photo URL"
-                        />
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-bold">Photo URL </span>
+                        </label>
+                        <input type="text" name='photo' defaultValue={user?.photoURL} placeholder="phot url" className="input input-bordered" required />
+
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-bold">Phone Number </span>
+                        </label>
+                        <input type="text" name='phone' defaultValue={user?.phoneNumber} placeholder="phone number" className="input input-bordered" required />
+
+                    </div>
+                    <div className="form-control mt-6">
+
+                        <input className="btn bg-[#bf472f] text-white" type="submit" value="Update" />
                     </div>
 
-                    <div>
-                        <button
-                            type="button"
-                            // onClick={updateProfile}
-                            className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
-                        >
-                            Update Profile
-                        </button>
-                    </div>
                 </form>
+
+                <div className="flex mt-5">
+                    <Link to='/myProfile'><button className="btn text-cen"><FaBackward></FaBackward> Back</button></Link>
+                </div>
             </div>
         </div>
     );
