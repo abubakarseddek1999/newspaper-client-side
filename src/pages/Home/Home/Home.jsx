@@ -6,6 +6,7 @@ import Reviews from "../reviews/Reviews";
 import PlanSection from "../planSection/PlanSection";
 import TrendingArticle from "../TrendingArticle/TrendingArticle";
 import Statistic from "../Statistic/Statistic";
+import Faq from "../FaqSection/Faq";
 
 const Home = () => {
     return (
@@ -16,8 +17,9 @@ const Home = () => {
            <Banner></Banner>
            <TrendingArticle></TrendingArticle>
            <PlanSection></PlanSection>
-           <AllPublisher></AllPublisher>
            <Statistic></Statistic>
+           <AllPublisher></AllPublisher>
+           <Faq></Faq>
 
            {/* <PopularItem></PopularItem> */}
            <Reviews></Reviews>
