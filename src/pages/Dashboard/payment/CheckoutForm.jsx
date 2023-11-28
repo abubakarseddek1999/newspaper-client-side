@@ -1,9 +1,8 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import useCart from "../../../Hooks/useCart";
 import useAuth from "../../../Hooks/useAuth";
-import Swal from "sweetalert2";
+
 
 
 const CheckoutForm = () => {
@@ -15,8 +14,8 @@ const CheckoutForm = () => {
     const elements = useElements();
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
-    const [cart, refetch] = useCart();
-    const totalPrice = cart.reduce((total, item) => total + item.price, 0)
+
+    const totalPrice = '20'
 
     useEffect(() => {
         if (totalPrice > 0) {
@@ -77,29 +76,10 @@ const CheckoutForm = () => {
             if (paymentIntent.status === 'succeeded') {
                 console.log('transaction id', paymentIntent.id);
                 setTransactionId(paymentIntent.id);
-                // now save the payment in the database 
-                const payment = {
-                    email: user?.email,
-                    price: totalPrice,
-                    transactionId: paymentIntent.id,
-                    date: new Date(), // utc data convert. use moment js to 
-                    cartIds: cart.map(item => item._id),
-                    menuItemIds: cart.map(item => item.menuId),
-                    status: 'pending'
-
+                if(paymentIntent.id){
+                    alert('success payment')
                 }
-                const res = await axiosSecure.post('/payments', payment);
-                console.log('payment saved', res.data);
-                refetch();
-                if (res.data?.paymentResult?.insertedId) {
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: "Thank you for payment",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                }
+               
             }
         }
 

@@ -83,7 +83,12 @@ export const router = createBrowserRouter([
           path:'/secret',
           element: <PrivetRoute><Secret></Secret></PrivetRoute>
 
-        }
+        },
+        {
+          path:'payment',
+          element: <Payment></Payment>
+
+        },
       ]
     },
     {
@@ -99,11 +104,6 @@ export const router = createBrowserRouter([
         {
           path:'cart',
           element:<Cart></Cart>
-        },
-        {
-          path:'payment',
-          element: <Payment></Payment>
-
         },
         {
           path:'paymentHistory',
