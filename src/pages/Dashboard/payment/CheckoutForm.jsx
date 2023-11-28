@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 
@@ -77,7 +78,13 @@ const CheckoutForm = () => {
                 console.log('transaction id', paymentIntent.id);
                 setTransactionId(paymentIntent.id);
                 if(paymentIntent.id){
-                    alert('success payment')
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your Payment successful",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
                 }
                
             }

@@ -1,14 +1,13 @@
 import { useForm } from "react-hook-form";
-import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const image_hosting_key =import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api =`https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-const AddItem = () => {
+const AddArticle = () => {
     const { register, handleSubmit, reset } = useForm();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
@@ -23,6 +22,7 @@ const AddItem = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
+        
         if(res.data.success){
             const menuItem ={
                 title: data.title,
@@ -30,7 +30,7 @@ const AddItem = () => {
                 publisher_name: data.publisher,
                 content: data.content,
                 image: res.data.data.display_url,
-                status: 'true' 
+                status: "false"
                 
             }
             //  
@@ -39,13 +39,7 @@ const AddItem = () => {
             if(menuRes.data.insertedId){
                 // show success popup
                 reset();
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: `${data.name} is added to the menu`,
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
+               
 
             }
             
@@ -55,12 +49,12 @@ const AddItem = () => {
 
     };
     return (
-        <div>
-            <SectionTitle Heading={'add an News'} SubHeading={"What's new"}></SectionTitle>
-            <div>
+        <div className="pt-20 h-[800px] bg-slate-200">
+           
+            <div className="p-20 ">
                 <form onSubmit={handleSubmit(onSubmit)} >
 
-                    <div className="form-control w-full my-6 ">
+                    <div className="form-control w-full  ">
                         <label className="label">
                             <span className="label-text">News title*</span>
 
@@ -129,4 +123,4 @@ const AddItem = () => {
     );
 };
 
-export default AddItem;
+export default AddArticle;

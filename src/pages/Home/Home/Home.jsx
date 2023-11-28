@@ -1,7 +1,6 @@
 import { Helmet } from "react-helmet";
 import Banner from "../Banner/Banner";
 import AllPublisher from "../AllPublisher/AllPublisher";
-// import PopularItem from "../Popular/PopularItem";
 import Reviews from "../reviews/Reviews";
 import PlanSection from "../planSection/PlanSection";
 import TrendingArticle from "../TrendingArticle/TrendingArticle";
@@ -20,8 +19,6 @@ const Home = () => {
            <Statistic></Statistic>
            <AllPublisher></AllPublisher>
            <Faq></Faq>
-
-           {/* <PopularItem></PopularItem> */}
            <Reviews></Reviews>
             
         </div>

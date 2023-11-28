@@ -19,12 +19,17 @@ const Article = () => {
     const [tabIndex, setTabIndex] = useState(initialIndex);
     // console.log(category);
     const [menu] = useMenu();
-    const study = menu.filter(item => item.category === 'study');
-    const jobs = menu.filter(item => item.category === 'jobs');
-    const technology = menu.filter(item => item.category === 'technology');
-    const sports = menu.filter(item => item.category === 'sports');
-    const health = menu.filter(item => item.category === 'health');
-    const all = menu;
+    console.log(menu);
+
+    const menus =menu.filter(item => item.status === 'true')
+    console.log(menus);
+
+    const study = menus.filter(item => item.category === 'study');
+    const jobs = menus.filter(item => item.category === 'jobs');
+    const technology = menus.filter(item => item.category === 'technology');
+    const sports = menus.filter(item => item.category === 'sports');
+    const health = menus.filter(item => item.category === 'health');
+    const all = menus;
     
     return (
         <div className="pt-20">

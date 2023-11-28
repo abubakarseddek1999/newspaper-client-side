@@ -1,22 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../pages/Home/Home/Home";
-import Menu from "../pages/menu/menu/Menu";
 import Login from "../pages/Login/Login";
 import NotFound from "../pages/ErrorPage/NotFound";
 import SignUp from "../pages/SignUp/SignUp";
 import Secret from "../pages/secret/Secret";
 import PrivetRoute from "./PrivetRoute";
 import Dashboard from "../Layout/Dashboard";
-import Cart from "../pages/Dashboard/Cart/Cart";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import AddItem from "../pages/Dashboard/AddItem/AddItem";
 import AdminRoute from "./AdminRoute";
 import ManageItem from "../pages/Dashboard/manageItem/ManageItem";
 import UpdateItem from "../pages/Dashboard/updateItem/UpdateItem";
 import Payment from "../pages/Dashboard/payment/Payment";
-import PaymentHistory from "../pages/Dashboard/paymentHistory/PaymentHistory";
-import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../pages/Dashboard/Adminhome/AdminHome";
 import Article from "../pages/order/Article/Article";
 import ArticleDetails from "../components/ArticleCard/ArticleDetails";
@@ -25,6 +21,7 @@ import AddPublisher from "../pages/Dashboard/AddPublisher/AddPublisher";
 import MyProfile from "../pages/updateProfile/MyProfile";
 import PremiumArticle from "../pages/Premium Article/PremiumArticle";
 import PremiumNewsDetails from "../pages/Premium Article/PremiumNewsDetails";
+import AddArticle from "../pages/AddArticle/AddArticle";
 
 
 export const router = createBrowserRouter([
@@ -38,12 +35,12 @@ export const router = createBrowserRouter([
             element: <Home></Home>
         },
         {
-          path:'/menu',
-          element: <Menu></Menu>
-        },
-        {
           path:'/PremiumArticle',
           element: <PrivetRoute><PremiumArticle></PremiumArticle></PrivetRoute>
+        },
+        {
+          path:'/addArticle',
+          element: <PrivetRoute><AddArticle></AddArticle></PrivetRoute>
         },
         {
           path:'/Article/:category',
@@ -95,21 +92,7 @@ export const router = createBrowserRouter([
       path:"dashboard",
       element: <Dashboard></Dashboard>,
       children:[
-        // normal user routes
-        {
-          path:'userHome',
-          element:<UserHome></UserHome>
-        },
 
-        {
-          path:'cart',
-          element:<Cart></Cart>
-        },
-        {
-          path:'paymentHistory',
-          element:<PaymentHistory></PaymentHistory>
-
-        },
         // admin only routes
         {
           path:'adminHome',
