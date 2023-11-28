@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 import useAdmin from "../../../Hooks/useAdmin";
 
+
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [isAdmin] = useAdmin();
@@ -18,6 +19,7 @@ const Navbar = () => {
     const navLink = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/AddArticle">Add Article</Link></li>
+        <li><Link to="/myArticle">My Article</Link></li>
         <li><Link to="/PremiumArticle">Premium Article</Link></li>
         <li><Link to="/subscription">Subscription</Link></li>
         <li><Link to="/Article/salad">All Articles</Link></li>

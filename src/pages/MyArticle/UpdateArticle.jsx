@@ -1,78 +1,102 @@
-import { useForm } from "react-hook-form";
+import { useLoaderData, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import useAuth from "../../Hooks/useAuth";
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 
-const image_hosting_key =import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api =`https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
-
-const AddArticle = () => {
-    const {user}=useAuth();
-    console.log(user);
+const UpdateArticle = () => {
+    const item = useLoaderData();
+    console.log(item);
+    // const { _id } = item;
+    // console.log(_id);
 
     const { register, handleSubmit, reset } = useForm();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
 
-    const onSubmit = async(data) => {
-        console.log(data)
+    const [menu, setMenu] = useState();
+    console.log(menu);
+    const { id } = useParams()
+    console.log(id);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/menu')
+            .then(res => res.json())
+            .then(data => {
+                setMenu(data)
+
+            });
+    }, [])
+    
+    // Use the menu data to find the item with the specific ID
+    const selectedItem = menu?.find(item => item._id === id);
+    // console.log(selectedItem);
+    const { title, category, price, recipe, image,_id } = selectedItem || {};
+    
+    const onSubmit = async (data) => {
+        // console.log(data)
         // image upload to imgbb and then get an url
 
-        const imageFile ={ image: data.image[0] }
+        const imageFile = { image: data.image[0] }
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        
-        if(res.data.success){
-            const menuItem ={
+        if (res.data.success) {
+            const menuItem = {
                 title: data.title,
                 category: data.category,
                 publisher_name: data.publisher,
-                content: data.content,
-                image: res.data.data.display_url,
-                status: "false",
-                user: user.email
-                
+                content: data.details,
+                image: res.data.data.display_url
+
             }
             //  
-            const menuRes = await axiosSecure.post('/menu',menuItem);
+            console.log(menuItem);
+            console.log(_id);
+            const menuRes = await axiosSecure.patch(`/menu/${_id}`, menuItem);
             console.log(menuRes.data);
-            if(menuRes.data.insertedId){
+            if (menuRes.data.modifiedCount > 0) {
                 // show success popup
-                reset();
+                // reset();
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `${data.name} is added to the menu`,
+                    title: `${data.title} is updated to the menu`,
                     showConfirmButton: false,
                     timer: 1500
-                  });
+                });
 
             }
-            
-            
+
+
         }
-        console.log('with image url',res.data);
+        console.log('with image url', res.data);
 
     };
+    console.log(category);
     return (
-        <div className="pt-20 h-[800px] bg-slate-200">
-           
-            <div className="p-20 ">
+        <div className="pt-20">
+            <h2 className="text-2xl font-bold text-center">Update Article</h2>
+            
+            <div className="p-5">
                 <form onSubmit={handleSubmit(onSubmit)} >
 
-                    <div className="form-control w-full  ">
+                    <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">News title*</span>
 
                         </label>
                         <input
                             type="text"
-                            {...register("title",{required:true})}
+                            defaultValue={selectedItem?.title}
+                            {...register("title", )}
                             placeholder="news title"
                             className="input input-bordered w-full " />
 
@@ -84,7 +108,8 @@ const AddArticle = () => {
                                 <span className="label-text">category*</span>
 
                             </label>
-                            <select defaultValue="default" {...register("category",{required:true})}
+                        
+                            <select defaultValue={category} {...register("category", )}
                                 className="select select-bordered w-full ">
                                 <option disabled value="default" >Select a category</option>
                                 <option value="sports">sports</option>
@@ -100,14 +125,14 @@ const AddArticle = () => {
                         {/* price */}
                         <div className="form-control w-full my-6 ">
                             <label className="label">
-                                <span className="label-text">publisher_name
-*</span>
+                                <span className="label-text">Publisher_name*</span>
 
                             </label>
                             <input
                                 type="text"
-                                {...register("publisher",{required:true})}
-                                placeholder="publisher type here"
+                                defaultValue={selectedItem?.publisher_name}
+                                {...register("publisher",)}
+                                placeholder="Publisher_name type here"
                                 className="input input-bordered w-full " />
 
                         </div>
@@ -119,19 +144,17 @@ const AddArticle = () => {
                             <span className="label-text">News Details</span>
 
                         </label>
-                        <textarea  {...register("content")} className="textarea textarea-bordered h-24" placeholder="news details"></textarea>
+                        <textarea defaultValue={selectedItem?.content} {...register("details")} className="textarea textarea-bordered h-24" placeholder="news details"></textarea>
 
                     </div>
                     <div>
-                        <input  {...register("image",{required:true})} type="file" className="file-input w-full max-w-xs" />
+                        <input  {...register("image", { required: true })} type="file" className="file-input w-full max-w-xs" />
                     </div>
-
-
-                   <button className="btn m-2">Add News</button>
+                    <button className="btn m-2">Update Item</button>
                 </form>
             </div>
         </div>
     );
 };
 
-export default AddArticle;
+export default UpdateArticle;

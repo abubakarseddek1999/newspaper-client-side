@@ -22,6 +22,8 @@ import MyProfile from "../pages/updateProfile/MyProfile";
 import PremiumArticle from "../pages/Premium Article/PremiumArticle";
 import PremiumNewsDetails from "../pages/Premium Article/PremiumNewsDetails";
 import AddArticle from "../pages/AddArticle/AddArticle";
+import MyArticle from "../pages/MyArticle/MyArticle";
+import UpdateArticle from "../pages/MyArticle/UpdateArticle";
 
 
 export const router = createBrowserRouter([
@@ -39,8 +41,16 @@ export const router = createBrowserRouter([
           element: <PrivetRoute><PremiumArticle></PremiumArticle></PrivetRoute>
         },
         {
+          path:'/myArticle',
+          element: <PrivetRoute><MyArticle></MyArticle> </PrivetRoute>
+        },
+        {
           path:'/addArticle',
           element: <PrivetRoute><AddArticle></AddArticle></PrivetRoute>
+        },
+        {
+          path:'/updateArticle/:id',
+          element: <PrivetRoute><UpdateArticle></UpdateArticle></PrivetRoute>
         },
         {
           path:'/Article/:category',
