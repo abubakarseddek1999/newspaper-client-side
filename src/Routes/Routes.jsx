@@ -23,6 +23,7 @@ import ArticleDetails from "../components/ArticleCard/ArticleDetails";
 import UpdateProfile from "../pages/updateProfile/UpdateProfile";
 import AddPublisher from "../pages/Dashboard/AddPublisher/AddPublisher";
 import MyProfile from "../pages/updateProfile/MyProfile";
+import PremiumArticle from "../pages/Premium Article/PremiumArticle";
 
 
 export const router = createBrowserRouter([
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
         {
           path:'/menu',
           element: <Menu></Menu>
+        },
+        {
+          path:'/PremiumArticle',
+          element: <PrivetRoute><PremiumArticle></PremiumArticle></PrivetRoute>
         },
         {
           path:'/Article/:category',
