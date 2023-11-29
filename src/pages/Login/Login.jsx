@@ -1,14 +1,11 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiFillFacebook, AiFillInstagram } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
-import loginImage from '../../assets/others/authentication2.png'
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
-// import Swal from "sweetalert2";
-
 const Login = () => {
     const [disabled, setDisabled] = useState(true);
     const { signInUser, signInWithGoogle } = useContext(AuthContext);
@@ -30,7 +27,6 @@ const Login = () => {
 
         signInUser(email, password)
             .then(result => {
-                alert('login success')
                 const loggedInUser = result.user;
                 console.log(loggedInUser);
 
