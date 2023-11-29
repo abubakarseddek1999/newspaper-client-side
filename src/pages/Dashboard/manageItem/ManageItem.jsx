@@ -37,6 +37,32 @@ const ManageItem = () => {
         });
     }
 
+    const handleMakeApprove = async(_id) => {
+        const menuItem = {
+           status: 'true'
+
+        }
+        //  
+        console.log(menuItem);
+        console.log(_id);
+        const menuRes = await axiosSecure.patch(`/menuStatus/${_id}`, menuItem);
+        console.log(menuRes.data);
+        if (menuRes.data.modifiedCount > 0) {
+            // show success popup
+            // reset();
+            refetch();
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "status is updated to the menu",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        }
+
+    }
+
     return (
         <div>
             <SectionTitle Heading={"manage All Items"} ></SectionTitle>
@@ -52,6 +78,7 @@ const ManageItem = () => {
                                 <th>Image</th>
                                 <th>Item Name</th>
                                 <th>publisher</th>
+                                <th>Status</th>
                                 <th>category</th>
                                 <th>Update</th>
                                 <th>Delete</th>
@@ -79,6 +106,13 @@ const ManageItem = () => {
 
                                     </td>
                                     <td>{item.publisher_name}</td>
+                                    <td>
+                                        {item?.status === 'true' ? 'approved' : <button
+                                            onClick={() => handleMakeApprove(item?._id)}
+                                            className="btn btn-sm bg-orange-500"> Approve
+                                        </button>}
+
+                                    </td>
                                     <td>{item.category}</td>
                                     <td>
                                         <Link to={`/dashboard/updateItem/${item._id}`}>

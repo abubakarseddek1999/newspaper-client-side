@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import useMenu from "../../Hooks/useMenu";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
+import { FaTrashAlt } from "react-icons/fa";
 
 const ManageItem = () => {
     const { user } = useAuth();
@@ -82,16 +83,18 @@ const ManageItem = () => {
                                         {item.title}
                                     </td>
                                     <td>{item.publisher_name}</td>
-                                    <td className="text-lime-600 font-bold">{ item.status === true ?'Confirm': 'pending'}</td>
+                                    <td className="text-lime-600 font-bold">{item.status === "true"? 'Approved' : 'pending'}</td>
                                     <td>
                                         <Link to={`/updateArticle/${item._id}`}>
                                             <button className="btn btn-ghost btn-xs">Update</button>
                                         </Link>
                                     </td>
                                     <td>
-                                        <button onClick={() => handleDeleteItem(item)} className="btn btn-ghost btn-xs">Delete</button>
+                                        <button onClick={() => handleDeleteItem(item)} className="btn btn-ghost btn-xs"><FaTrashAlt className="text-red-600 text-xl"></FaTrashAlt></button>
                                     </td>
-                                    <td><button className="btn btn-ghost btn-xs">Details</button> </td>
+                                    <td>
+                                        <Link to={`/details/${item?._id}`}> <button className="btn btn-ghost btn-xs">Details</button></Link>
+                                    </td>
                                 </tr>)
                             }
 
