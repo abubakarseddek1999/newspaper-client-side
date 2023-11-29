@@ -65,7 +65,7 @@ const SignUp = () => {
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center w-1/2 mr-14 lg:text-left">
                         {/* <img src={img} alt="" /> */}
-                        <img src="" alt="" />
+                        <img src="https://i.postimg.cc/fW0WLNn4/Mobile-login-pana-1.png" alt="" />
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
