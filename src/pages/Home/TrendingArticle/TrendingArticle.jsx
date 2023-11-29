@@ -43,7 +43,7 @@ const TrendingArticle = () => {
                         <h2 className="card-title">{item?.title}</h2>
                         <p>{item.content}</p>
                         <div className="card-actions ">
-                            <button className="btn btn-primary">Details</button>
+                            <button className="btn ">Details</button>
                         </div>
                     </div>
                 </div> )}

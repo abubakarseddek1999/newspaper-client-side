@@ -14,10 +14,10 @@ const Home = () => {
                 <title> NewsBD | Home</title>
             </Helmet>
            <Banner></Banner>
+           <AllPublisher></AllPublisher>
            <TrendingArticle></TrendingArticle>
            <PlanSection></PlanSection>
            <Statistic></Statistic>
-           <AllPublisher></AllPublisher>
            <Faq></Faq>
            <Reviews></Reviews>
             

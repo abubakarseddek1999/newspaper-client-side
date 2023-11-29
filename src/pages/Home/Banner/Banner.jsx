@@ -11,7 +11,7 @@ const Banner = () => {
             <div>
 
 
-                <img className="block w-full h-auto" src={img3} alt="" />
+                <img className="block w-full h-auto" src={img2} alt="" />
 
                 <div className="absolute inset-0 text-white text-center bg-black bg-opacity-50 p-4 flex flex-col items-center justify-center">
                     <p className="text-2xl font-bold">{moment().format("dddd, MMMM D, YYYY ")}</p>
@@ -23,7 +23,7 @@ const Banner = () => {
             </div>
 
             <div>
-                <img src={img2} />
+                <img src={img3} />
                 <div className="absolute inset-0 text-white text-center bg-black bg-opacity-50 p-4 flex flex-col items-center justify-center">
                     <p className="text-2xl font-bold">{moment().format("dddd, MMMM D, YYYY ")}</p>
                     <p>By: [NewsBD] Staff</p>
