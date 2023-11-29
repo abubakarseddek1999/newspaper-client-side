@@ -1,5 +1,4 @@
 import Card from "../../../components/ArticleCard/Card";
-import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import required modules
@@ -7,6 +6,7 @@ import { Pagination } from 'swiper/modules';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { useState } from "react";
 
 const OrderTab = ({ items }) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -32,7 +32,7 @@ const OrderTab = ({ items }) => {
                         <div className="input-group">
                             <input
                                 type="text"
-                                placeholder="Search by service name"
+                                placeholder="Search by Article title name"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="input md:w-96 input-bordered"

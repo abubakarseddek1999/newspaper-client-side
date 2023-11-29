@@ -86,7 +86,7 @@ const Login = () => {
                 <div className="hero-content flex-col lg:flex-row ">
                     <div className="text-center w-1/2 mr-14 lg:text-left">
                         {/* <img src={img} alt="" /> */}
-                        <img src={loginImage} alt="" />
+                        <img src="https://i.postimg.cc/fW0WLNn4/Mobile-login-pana-1.png"alt="" />
                     </div>
 
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -122,12 +122,12 @@ const Login = () => {
                             {/* sign in button */}
                             <div className="form-control mt-2">
                                 {/* TODO: apply disable for re captcha*/}
-                                <input disabled={false} className="btn bg-[#bf472f] text-white" type="submit" value="Log in" />
+                                <input disabled={false} className="btn bg-[#4bcc92] text-white" type="submit" value="Log in" />
                             </div>
 
                             <div className='text-center'>
                                 <div className='mt-3'>
-                                    <p >New here? <br /> <Link to="/signup" className='text-orange-500 font-bold '>Create a New Account</Link></p>
+                                    <p >New here? <br /> <Link to="/signup" className='text-lime-600 font-bold '>Create a New Account</Link></p>
                                     <p>Or Sign In with</p>
                                     <div className='flex justify-center gap-4 mt-2'>
                                         <Link><AiFillFacebook /> </Link>

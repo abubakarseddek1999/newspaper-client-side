@@ -7,6 +7,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import SocialLogin from "../../components/socialLogin/SocialLogin";
+import { AiFillFacebook } from "react-icons/ai";
 
 const SignUp = () => {
     const axiosPublic = useAxiosPublic();
@@ -64,7 +65,7 @@ const SignUp = () => {
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center w-1/2 mr-14 lg:text-left">
                         {/* <img src={img} alt="" /> */}
-                        <img src={SignUpImage} alt="" />
+                        <img src="" alt="" />
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -134,9 +135,10 @@ const SignUp = () => {
                                 <input className="btn btn-primary" type="submit" value="Sign up" />
 
                             </div>
-                            <p className="text-center">already Sign up? <span className="text-red-600 font-bold"><Link to='/login'>Sign In</Link></span></p>
+                            <p className="text-center">already Sign up? <span className="text-lime-600 font-bold"><Link to='/login'>Sign In</Link></span></p>
                             <div className="divider"></div>
                             <SocialLogin></SocialLogin>
+                            
                         </form>
                     </div>
                 </div>

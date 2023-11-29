@@ -126,7 +126,7 @@ const AddArticle = () => {
 
                                 
                                {
-                                data.map(item =><option key={item._id} value="sports">{item.publisher}</option>)
+                                data?.map(item =><option key={item._id} value="sports">{item.publisher}</option>)
                                }
 
                             </select>
