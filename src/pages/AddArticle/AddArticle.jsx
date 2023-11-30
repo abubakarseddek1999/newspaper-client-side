@@ -4,6 +4,7 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -17,7 +18,7 @@ const AddArticle = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/publisher')
+        fetch('https://newspaper-server-one.vercel.app/publisher')
             .then(res => res.json())
             .then(data => {
 
@@ -25,7 +26,7 @@ const AddArticle = () => {
 
             });
     }, [])
-    
+
 
     const { register, handleSubmit, reset } = useForm();
     const axiosPublic = useAxiosPublic();
@@ -77,6 +78,10 @@ const AddArticle = () => {
     return (
         <div className="pt-20 h-[800px] bg-slate-200">
 
+            <Helmet>
+                <title>NewsBD | Add Articles</title>
+            </Helmet>
+
             <div className="p-20 ">
                 <form onSubmit={handleSubmit(onSubmit)} >
 
@@ -124,10 +129,10 @@ const AddArticle = () => {
                                 className="select select-bordered w-full ">
                                 <option disabled value="default" >Select a Publisher</option>
 
-                                
-                               {
-                                data?.map(item =><option key={item._id} value="sports">{item.publisher}</option>)
-                               }
+
+                                {
+                                    data?.map(item => <option key={item._id} value="sports">{item.publisher}</option>)
+                                }
 
                             </select>
 

@@ -8,7 +8,7 @@ const AllPublisher = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/publisher')
+        fetch('https://newspaper-server-one.vercel.app/publisher')
             .then(res => res.json())
             .then(data => {
 

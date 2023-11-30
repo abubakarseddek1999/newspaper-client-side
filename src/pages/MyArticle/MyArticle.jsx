@@ -4,6 +4,7 @@ import useMenu from "../../Hooks/useMenu";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
 import { FaTrashAlt } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const ManageItem = () => {
     const { user } = useAuth();
@@ -44,6 +45,9 @@ const ManageItem = () => {
 
     return (
         <div className="pt-20 h-screen">
+            <Helmet>
+                <title>NewsBD | My Articles</title>
+            </Helmet>
 
             <div className="p-5">
                 <div className="overflow-x-auto">
@@ -83,7 +87,7 @@ const ManageItem = () => {
                                         {item.title}
                                     </td>
                                     <td>{item.publisher_name}</td>
-                                    <td className="text-lime-600 font-bold">{item.status === "true"? 'Approved' : 'pending'}</td>
+                                    <td className="text-lime-600 font-bold">{item.status === "true" ? 'Approved' : 'pending'}</td>
                                     <td>
                                         <Link to={`/updateArticle/${item._id}`}>
                                             <button className="btn btn-ghost btn-xs">Update</button>

@@ -25,7 +25,7 @@ const UpdateArticle = () => {
     console.log(id);
 
     useEffect(() => {
-        fetch('http://localhost:5000/menu')
+        fetch('https://newspaper-server-one.vercel.app/menu')
             .then(res => res.json())
             .then(data => {
                 setMenu(data)

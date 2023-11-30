@@ -1,7 +1,8 @@
-import { FaAd, FaCalendar, FaHome, FaList, FaNewspaper, FaShoppingCart, FaUsers,  } from "react-icons/fa";
+import { FaAd, FaCalendar, FaHome, FaList, FaNewspaper, FaShoppingCart, FaUsers, } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../Hooks/useCart";
 import useAdmin from "../Hooks/useAdmin";
+import { Helmet } from "react-helmet";
 
 
 const Dashboard = () => {
@@ -11,6 +12,9 @@ const Dashboard = () => {
 
     return (
         <div className="flex ">
+            <Helmet>
+                <title>NewsBD / Dashboard </title>
+            </Helmet>
 
             {/* dashboard side bar */}
             <div className="div w-64 min-h-screen bg-blue-200">
@@ -30,7 +34,7 @@ const Dashboard = () => {
 
                                 <NavLink to="/dashboard/manageItems"> <FaList></FaList>  Manage Items</NavLink>
                             </li>
-                            
+
                             <li>
 
                                 <NavLink to="/dashboard/users"> <FaUsers></FaUsers>

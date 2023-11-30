@@ -9,7 +9,7 @@ const ArticleDetails = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/menu')
+        fetch('https://newspaper-server-one.vercel.app/menu')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
