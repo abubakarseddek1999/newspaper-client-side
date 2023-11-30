@@ -1,7 +1,8 @@
 - Newspaper FullStack Website
+
 - This project is a comprehensive FullStack Newspaper Website built using React, Firebase, React Router, Node.js, Express, and MongoDB.
 
-1. **Home Page:**
+    1. **Home Page:**
    - Navbar with intuitive navigation links.
    - Trending Articles Slider based on total article views.
    - All Publisher section displaying publishers added by admin.
