@@ -94,7 +94,9 @@ const PremiumArticlesPage = () => {
 
         <div className="grid grid-cols-1 p-2 md:grid-cols-2  lg:grid-cols-3 gap-10">
           {premiumArticles.map((article) => (
-            <div key={article.id} className="card bg-base-100 h-[600px] shadow-xl">
+            <div key={article.id} data-aos="flip-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="2000" className="card bg-base-100 h-[600px] shadow-xl">
               <div className="border h-[300px]">
                 <figure><img className="h-[300px] w-full" src={article.image} alt="news" /></figure>
               </div>
