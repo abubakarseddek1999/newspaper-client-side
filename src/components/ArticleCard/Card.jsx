@@ -5,11 +5,12 @@ const Card = ({ item }) => {
 
     return (
         <div>
-            <div className="card w-96 bg-base-100 h-[600px] shadow-xl">
+            <div data-aos="flip-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="2000" className="card w-96 bg-base-100 h-[600px] shadow-xl">
                 <div className="border h-[300px]">
                     <figure><img className="h-[300px] w-full" src={image} alt="news" /></figure>
                 </div>
-                {/* <p className="bg-slate-900 text-white absolute right-0 p-4 mr-4 mt-4">{price}</p> */}
                 <div className="card-body  flex flex-col ">
                     <h2 className="card-title  ">{title}</h2>
                     <p> <span className="text-xl font-bold">Publisher</span> :{publisher_name}</p>
