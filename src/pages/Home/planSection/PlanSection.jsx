@@ -7,7 +7,7 @@ const PlanSection = () => {
         <div>
             <SectionTitle Heading={"All Plans"}></SectionTitle>
             <div className="p-2 gap-2 flex flex-col md:flex-row justify-between">
-                <div className="relative flex w-full max-w-[20rem] flex-col rounded-xl bg-gradient-to-tr from-teal-600 to-slate-600 bg-clip-border p-8 text-white shadow-md shadow-gray-500">
+                <div className="relative flex w-full  md:max-w-[20rem] flex-col rounded-xl bg-gradient-to-tr from-teal-600 to-slate-600 bg-clip-border p-8 text-white shadow-md shadow-gray-500">
                     <div className="relative pb-8 m-0 mb-8 overflow-hidden text-center text-gray-700 bg-transparent border-b rounded-none shadow-none border-white/10 bg-clip-border">
                         <p className="block font-sans text-sm antialiased font-normal leading-normal text-white uppercase">
                             Free For 1 Month
@@ -142,7 +142,7 @@ const PlanSection = () => {
                     </div>
                 </div>
 
-                <div className="relative flex w-full max-w-[20rem] flex-col rounded-xl bg-gradient-to-tr from-teal-600 to-slate-600 bg-clip-border p-8 text-white shadow-md shadow-gray-500">
+                <div className="relative flex w-full md:max-w-[20rem] flex-col rounded-xl bg-gradient-to-tr from-teal-600 to-slate-600 bg-clip-border p-8 text-white shadow-md shadow-gray-500">
                     <div className="relative pb-8 m-0 mb-8 overflow-hidden text-center text-gray-700 bg-transparent border-b rounded-none shadow-none border-white/10 bg-clip-border">
                         <p className="block font-sans text-sm antialiased font-normal leading-normal text-white uppercase">
                             Premium Duo
@@ -281,7 +281,7 @@ const PlanSection = () => {
                     </div>
                 </div>
 
-                <div className="relative flex w-full max-w-[20rem] flex-col rounded-xl bg-gradient-to-tr from-teal-600 to-slate-600 bg-clip-border p-8 text-white shadow-md shadow-gray-500">
+                <div className="relative flex w-full md:max-w-[20rem] flex-col rounded-xl bg-gradient-to-tr from-teal-600 to-slate-600 bg-clip-border p-8 text-white shadow-md shadow-gray-500">
                     <div className="relative pb-8 m-0 mb-8 overflow-hidden text-center text-gray-700 bg-transparent border-b rounded-none shadow-none border-white/10 bg-clip-border">
                         <p className="block font-sans text-sm antialiased font-normal leading-normal text-white uppercase">
                             Premium Family
