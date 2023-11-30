@@ -2,25 +2,51 @@
 import Chart from "react-google-charts";
 import useAuth from "../../../Hooks/useAuth";
 import PieChart from "./PieChart";
+import useMenu from "../../../Hooks/useMenu";
 
 
 
 const AdminHome = () => {
     const { user } = useAuth();
     // Example data
+
+    const [menu] = useMenu();
+    console.log(menu);
+
+    const ProthomAloPublisher = menu.filter(item => item.publisher_name === 'Prothom Alo').length;
+
+    console.log(ProthomAloPublisher);
+    const NewsBDPublisher = menu.filter(item => item.publisher_name === 'NewsBD').length;
+    console.log(NewsBDPublisher);
+
+    const DailyStarPublisher = menu.filter(item => item.publisher_name === 'Daily star').length;
+    console.log(DailyStarPublisher);
+
+
+    const totalItems = ProthomAloPublisher + DailyStarPublisher + NewsBDPublisher;
+
+    const ProthomAloPercentage = (ProthomAloPublisher / totalItems) * 100;
+    const NewsBDPercentage = (NewsBDPublisher / totalItems) * 100;
+    const DailyStarPercentage = (DailyStarPublisher / totalItems) * 100;
+
+    console.log('Prothom Alo Percentage:', ProthomAloPercentage);
+    console.log('News BD Percentage:', NewsBDPercentage);
+    console.log('Daily Star Percentage:', DailyStarPercentage);
+
     const publicationData = [
-        { publication: 'A', percentage: 20 },
-        { publication: 'B', percentage: 30 },
-        { publication: 'C', percentage: 50 },
+        { publication: 'Prothom Alo', percentage: ProthomAloPercentage },
+        { publication: 'newsBD', percentage: NewsBDPercentage },
+        { publication: 'Daily star', percentage: DailyStarPercentage },
     ];
+
     const barChartData = [
         ['Publication', 'Articles'],
-        ['Publication A', 15],
-        ['Publication B', 25],
-        ['Publication C', 10],
+        ['Publication Prothom Alo', ProthomAloPercentage],
+        ['Publication newsBD', NewsBDPercentage],
+        ['Publication Daily star', DailyStarPercentage],
     ];
     const lineChartData = [
-        ['Month', 'Publication A', 'Publication B', 'Publication C'],
+        ['Month', ' Prothom Alo', ' newsBD', ' Daily star'],
         ['Jan', 10, 20, 15],
         ['Feb', 15, 25, 18],
         ['Mar', 20, 30, 25],
