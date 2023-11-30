@@ -2,7 +2,7 @@
 
 const Faq = () => {
     return (
-        <div className=" bg-slate-50  ">
+        <div className="  ">
             <p className="text-xl md:text-3xl lg:text-5xl font-bold text-center py-5"><span className="text-blue-500">F</span>requently <span className="text-blue-500">A</span>sked <span className="text-blue-500">Q</span>uestions </p>
 
             <div className="flex flex-col md:flex-row justify-center items-center">
