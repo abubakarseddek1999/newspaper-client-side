@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form"
-import SignUpImage from '../../assets/others/authentication2.png'
 import { Helmet } from "react-helmet";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
@@ -7,7 +6,6 @@ import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import SocialLogin from "../../components/socialLogin/SocialLogin";
-import { AiFillFacebook } from "react-icons/ai";
 
 const SignUp = () => {
     const axiosPublic = useAxiosPublic();
