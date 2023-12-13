@@ -38,7 +38,8 @@ const AdminHome = () => {
         { publication: 'newsBD', percentage: NewsBDPercentage },
         { publication: 'Daily star', percentage: DailyStarPercentage },
     ];
-
+    
+    // barchart data
     const barChartData = [
         ['Publication', 'Articles'],
         ['Publication Prothom Alo', ProthomAloPercentage],

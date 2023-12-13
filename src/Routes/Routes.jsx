@@ -24,6 +24,7 @@ import PremiumNewsDetails from "../pages/Premium Article/PremiumNewsDetails";
 import AddArticle from "../pages/AddArticle/AddArticle";
 import MyArticle from "../pages/MyArticle/MyArticle";
 import UpdateArticle from "../pages/MyArticle/UpdateArticle";
+import Contact from "../pages/Contact/Contact";
 
 
 export const router = createBrowserRouter([
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
         {
           path:'/login',
           element: <Login></Login>
+        },
+        {
+          path:'/contact',
+          element: <Contact></Contact>
         },
         {
           path:'/myProfile',
