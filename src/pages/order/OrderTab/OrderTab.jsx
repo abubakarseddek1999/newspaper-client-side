@@ -2,24 +2,36 @@ import Card from "../../../components/ArticleCard/Card";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import required modules
-import { Pagination } from 'swiper/modules';
-// Import Swiper styles
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const OrderTab = ({ items }) => {
     const [searchTerm, setSearchTerm] = useState('');
-    const pagination = {
-        clickable: true,
-        renderBullet: function (index, className) {
-            return '<span class="' + className + '">' + (index + 1) + '</span>';
-        },
-    };
+
     // Filter services based on the search input
     const filteredServices = items.filter(service => {
         return service.title.toLowerCase().includes(searchTerm.toLowerCase());
     });
+
+
+    const articlesPerPage = 9; // Adjust the number of articles per page as needed
+    const [currentPage, setCurrentPage] = useState(1);
+    const [displayedArticles, setDisplayedArticles] = useState([]);
+
+    useEffect(() => {
+        const startIndex = (currentPage - 1) * articlesPerPage;
+        const endIndex = startIndex + articlesPerPage;
+        const articlesToShow = filteredServices.slice(startIndex, endIndex);
+        setDisplayedArticles(articlesToShow);
+    }, [filteredServices, currentPage]);
+
+    const totalPages = Math.ceil(filteredServices.length / articlesPerPage);
+
+    const handlePageChange = (newPage) => {
+        setCurrentPage(newPage);
+    };
 
     return (
         <div >
@@ -48,21 +60,40 @@ const OrderTab = ({ items }) => {
 
 
             <Swiper
-                pagination={pagination}
-                modules={[Pagination]}
-                className="mySwiper"
+
             >
                 <SwiperSlide>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-5">
                         {/* FoodCard */}
-                        {filteredServices.map(item => <Card item={item} key={item._id}></Card>)}
+                        {displayedArticles?.map(item => <Card item={item} key={item._id}></Card>)}
+
+
                     </div>
+
 
                 </SwiperSlide>
 
             </Swiper>
+            {/* Pagination controls */}
+            <div className="flex justify-center my-5">
+                <button className="btn"
+                    disabled={currentPage === 1}
+                    onClick={() => handlePageChange(currentPage - 1)}
+                >
+                    Previous
+                </button>
+                <span className="flex justify-center items-center p-2 font-bold">
+                    Page {currentPage} of {totalPages}
+                </span>
+                <button className="btn "
+                    disabled={currentPage === totalPages}
+                    onClick={() => handlePageChange(currentPage + 1)}
+                >
+                    Next<MdKeyboardDoubleArrowRight className="text-xl" />
+                </button>
+            </div>
 
-        </div>
+        </div >
     );
 };
 
