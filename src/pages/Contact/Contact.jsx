@@ -21,9 +21,9 @@ const Contact = () => {
     };
 
     return (
-        <div id="contact" className="pt-20 h-screen mx-10">
+        <div id="contact" className="pt-20 min-h-screen mx-10">
             <h2 className="text-2xl md:text-3xl font-bold text-center my-10">Contact me</h2>
-            <div className="flex flex-col md:flex-row justify-center gap-10">
+            <div className="flex flex-col md:flex-row mb-10 justify-center gap-10">
                 <div className=" text-center">
                     <div className="text-3xl text-pink-600 flex justify-center"><IoCall /></div>
                     <p className="text-2xl font-bold">Call</p>
@@ -45,42 +45,50 @@ const Contact = () => {
                 </div>
             </div>
 
-            <div className="border border-fuchsia-500  p-5 m-8 rounded-xl bg-slate-700 ">
-                <form ref={form} className="card-body" onSubmit={sendEmail}>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text font-bold text-white">Name</span>
-                        </label>
-                        <input type="text" placeholder="Your name" name="from_name" className="input border input-bordered" required />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text font-bold text-white">Email</span>
-                        </label>
-                        <input type="email" placeholder="Your email" name="from_email" className="input input-bordered" required />
-                    </div>
+            <div className="flex flex-col md:flex-row">
 
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text font-bold text-white">Message</span>
-                        </label>
-                        <textarea className="border rounded" name="message" />
+                <div className="border border-fuchsia-500 rounded-l-lg bg-slate-700 w-full md:w-1/2 ">
+                    <form ref={form} className="card-body" onSubmit={sendEmail}>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text font-bold text-white">Name</span>
+                            </label>
+                            <input type="text" placeholder="Your name" name="from_name" className="input border input-bordered" required />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text font-bold text-white">Email</span>
+                            </label>
+                            <input type="email" placeholder="Your email" name="from_email" className="input input-bordered" required />
+                        </div>
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text font-bold text-white">Message</span>
+                            </label>
+                            <textarea className="border rounded" name="message" />
 
 
-                        <input className="btn mt-5 uppercase font-bold text-xl" type="submit" value="Send" />
-                    </div>
+                            <input className="btn mt-5 uppercase font-bold text-xl" type="submit" value="Send" />
+                        </div>
 
-                    {/* <label>Name</label> 
+                        {/* <label>Name</label> 
                     <input type="text" name="from_name" /> */}
 
-                    {/* <label>Email</label>
+                        {/* <label>Email</label>
                     <input type="email" name="from_email" /> */}
 
-                    {/* <label>Message</label>
+                        {/* <label>Message</label>
                     <textarea name="message" />
 
                     <input type="submit" value="Send" /> */}
-                </form>
+                    </form>
+                </div>
+
+                <div className="w-full md:w-1/2">
+                    <img className="h-full w-full" src="https://i.postimg.cc/6qfdr2yT/istockphoto-1331493599-612x612.jpg" alt="" />
+
+                </div>
             </div>
         </div>
     );
