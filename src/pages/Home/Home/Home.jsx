@@ -6,6 +6,7 @@ import PlanSection from "../planSection/PlanSection";
 import TrendingArticle from "../TrendingArticle/TrendingArticle";
 import Statistic from "../Statistic/Statistic";
 import Faq from "../FaqSection/Faq";
+import BreakingNews from "../../../components/BreakinkNews/BreakingNews";
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
                 <title> NewsBD | Home</title>
             </Helmet>
            <Banner></Banner>
+           <BreakingNews></BreakingNews>
            <AllPublisher></AllPublisher>
            <TrendingArticle></TrendingArticle>
            <PlanSection></PlanSection>
