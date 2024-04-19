@@ -5,6 +5,7 @@ import emailjs from '@emailjs/browser';
 import { useRef } from "react";
 import Swal from "sweetalert2";
 
+
 const Contact = () => {
     const form = useRef();
 
@@ -21,7 +22,7 @@ const Contact = () => {
     };
 
     return (
-        <div id="contact" className="pt-20 min-h-screen mx-10">
+        <div id="contact" className="pt-20  mx-10">
             <h2 className="text-2xl md:text-3xl font-bold text-center my-10">Contact me</h2>
             <div className="flex flex-col md:flex-row mb-10 justify-center gap-10">
                 <div className=" text-center">
@@ -45,9 +46,9 @@ const Contact = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col md:flex-row">
+            <div className="flex md:flex-row flex-col-reverse">
 
-                <div className="border border-fuchsia-500 rounded-l-lg bg-slate-700 w-full md:w-1/2 ">
+                <div className="border border-fuchsia-500 rounded-b-lg md:rounded-none md:rounded-l-lg bg-slate-700 w-full md:w-1/2 ">
                     <form ref={form} className="card-body" onSubmit={sendEmail}>
                         <div className="form-control">
                             <label className="label">
@@ -85,10 +86,21 @@ const Contact = () => {
                     </form>
                 </div>
 
-                <div className="w-full md:w-1/2">
-                    <img className="h-full w-full" src="https://i.postimg.cc/6qfdr2yT/istockphoto-1331493599-612x612.jpg" alt="" />
+                <div className="w-full md:w-1/2 rounded-t-xl">
+                    <img className="h-full w-full object-cover object-center  md:rounded-r-lg " src="https://i.postimg.cc/6qfdr2yT/istockphoto-1331493599-612x612.jpg" alt="" />
 
                 </div>
+            </div>
+
+            {/* location */}
+            <div className="h-[400px] relative hidden md:flex">
+                <img className="h-[400px] w-full" src="https://i.postimg.cc/4x1ZtJfy/planet-earth-topography-nature-view-generated-by-ai.jpg" alt="" />
+
+                <div className="absolute top-6 md:left-72 mt-20 md:ml-80">
+                <FaLocationDot className="text-5xl text-pink-600"/>
+                <p className="text-black">Brahmanbaria</p>
+                </div>
+               
             </div>
         </div>
     );
